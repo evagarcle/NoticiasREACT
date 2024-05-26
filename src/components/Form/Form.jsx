@@ -1,5 +1,6 @@
 import { useState } from "react"
 import Content from "react-simple-wysiwyg"
+import { useNavigate } from "react-router-dom"
 
 const Form = () => {
 
@@ -8,7 +9,8 @@ const Form = () => {
     title:"",
     Content:""
   })
-  const [content, setContent] = useState("")
+  
+  let navigate = useNavigate()
 
   const handleChange = (e) => {
     const { name, value } = e.target
@@ -16,28 +18,37 @@ const Form = () => {
       ...formInfo,
       [name]: value
     })
-    if (e.target.name === "content") {
-      setContent(e.target.value)
-    }
+  }
+
+  const cleanFormAndRedirect = () => {
+    setFormInfo({
+      name:"",
+      title:"",
+      content:""
+    })
+
+    setTimeout(() => {
+      navigate("/ListNews")
+    }, 1500)
   }
 
 
-  // function onChange(e) {
-  //   setContent(e.target.value)
-  // }
-
-  handleSubmit(e) {
+  const handleSubmit = (e) => {
+    e.preventDefault()
     const savedNews = JSON.parse(localStorage.getItem("listNews")) || []
     const updatedNews = [...savedNews,formInfo]
+    localStorage.setItem("listNews", JSON.stringify(updatedNews))
+
+    cleanFormAndRedirect()
   }
 
 
   return (
     <div>
-      <form>
-        <input onChange={handleChange} type="text" name="name" id="name" placeholder="Escriba tu nombre" />
-        <input onChange={handleChange} type="text" name="title" id="title" placeholder="Escriba el título de la noticia" />
-        <Content onChange={handleChange} value={content} name="content" id="content" placeholder="Escriba el cuerpo de la noticia" />
+      <form onSubmit={handleSubmit}>
+        <input onChange={handleChange} type="text" value={formInfo.name} name="name" id="name" placeholder="Escriba tu nombre" />
+        <input onChange={handleChange} type="text" value={formInfo.title} name="title" id="title" placeholder="Escriba el título de la noticia" />
+        <Content onChange={handleChange} value={formInfo.content} name="content" id="content" placeholder="Escriba el cuerpo de la noticia" />
         <input type="submit"/>
       </form>
     </div>
