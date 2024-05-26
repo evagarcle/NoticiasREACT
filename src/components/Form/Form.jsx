@@ -3,6 +3,7 @@ import Content from "react-simple-wysiwyg"
 import { useNavigate } from "react-router-dom"
 
 
+
 const Form = () => {
 
   const [formInfo, setFormInfo] = useState({
@@ -45,7 +46,8 @@ const Form = () => {
 
 
   return (
-    <div>
+    <div className="wrapper">
+      <h1>Postea tu propia noticia</h1>
       <form onSubmit={handleSubmit}>
         <input onChange={handleChange} type="text" value={formInfo.name} name="name" id="name" placeholder="Escriba tu nombre" />
         <input onChange={handleChange} type="text" value={formInfo.title} name="title" id="title" placeholder="Escriba el título de la noticia" />

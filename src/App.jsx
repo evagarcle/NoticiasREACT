@@ -8,6 +8,7 @@ import ListNews from './components/ListNews/ListNews'
 import Footer from './components/Footer/Footer'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Container from 'react-bootstrap/Container';
+import NewsApi from './components/NewsApi/NewsApi'
 
 
 function App() {
@@ -21,6 +22,8 @@ function App() {
             <Route path="/Home" element={<Home />} />
             <Route path="/Form" element={<Form />} />
             <Route path="/ListNews" element={<ListNews />} />
+            <Route path="/NewsApi" element={<NewsApi />} />
+           
           </Routes>
           <Footer/>
         </BrowserRouter>  

@@ -11,7 +11,7 @@ const LastNew = () => {
   }, [])
 
   return (
-    <div>
+    <div className="wrapper">
       
       <h1>Última noticia</h1>
       <h2>{listNews.title}</h2>
