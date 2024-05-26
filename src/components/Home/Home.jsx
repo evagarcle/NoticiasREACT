@@ -3,7 +3,7 @@ import LastNew from "../LastNew/LastNew"
 
 const Home = () => {
   return (
-    <div>
+    <div className="wrapper">
     <LastNew/> 
     </div>
   )
