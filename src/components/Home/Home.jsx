@@ -1,8 +1,11 @@
+import LastNew from "../LastNew/LastNew"
 
 
 const Home = () => {
   return (
-    <div>Home</div>
+    <div>
+    <LastNew/> 
+    </div>
   )
 }
 

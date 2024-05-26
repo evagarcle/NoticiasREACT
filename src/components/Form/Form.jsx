@@ -2,6 +2,7 @@ import { useState } from "react"
 import Content from "react-simple-wysiwyg"
 import { useNavigate } from "react-router-dom"
 
+
 const Form = () => {
 
   const [formInfo, setFormInfo] = useState({
@@ -49,7 +50,8 @@ const Form = () => {
         <input onChange={handleChange} type="text" value={formInfo.name} name="name" id="name" placeholder="Escriba tu nombre" />
         <input onChange={handleChange} type="text" value={formInfo.title} name="title" id="title" placeholder="Escriba el título de la noticia" />
         <Content onChange={handleChange} value={formInfo.content} name="content" id="content" placeholder="Escriba el cuerpo de la noticia" />
-        <input type="submit"/>
+        <input className="button" type="submit"/>
+        
       </form>
     </div>
   )
